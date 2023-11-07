@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BrinquedoController;
 use App\Http\Controllers\VendaController;
-use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +24,6 @@ use App\Http\Controllers\UsuarioController;
 
 Auth::routes();
 
-Route::resource('/usuario', UsuarioController::class);
 Route::resource('/brinquedo', BrinquedoController::class);
 Route::resource('/venda', VendaController::class);
 
