@@ -28,3 +28,7 @@ Route::get('venda', function () {
 Route::get('parque', function () {
     return view('parque');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
