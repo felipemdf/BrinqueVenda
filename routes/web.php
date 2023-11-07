@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ParqueController;
+use App\Http\Controllers\BrinquedoController;
+use App\Http\Controllers\VendaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,14 +24,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('/parque', ParqueController::class);
+Route::resource('/brinquedo', BrinquedoController::class);
+Route::resource('/venda', VendaController::class);
+
 // Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Parque
-Route::get('/parque', [App\Http\Controllers\ParqueController::class, 'index'])->name('parque');
-
-// Brinquedo
-Route::get('/brinquedo', [App\Http\Controllers\BrinquedoController::class, 'index'])->name('brinquedo');
-
-// Venda
-Route::get('/venda', [App\Http\Controllers\VendaController::class, 'index'])->name('venda');
