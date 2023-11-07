@@ -14,21 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('BrinqueVenda');
-});
-
-Route::get('brinquedos', function () {
-    return view('brinquedos');
-});
-
-Route::get('venda', function () {
-    return view('venda');
-});
-
-Route::get('parque', function () {
-    return view('parque');
+    return redirect('/home');
 });
 
 Auth::routes();
 
+// Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Parque
+Route::get('/parque', [App\Http\Controllers\ParqueController::class, 'index'])->name('parque');
+
+// Brinquedo
+Route::get('/brinquedo', [App\Http\Controllers\BrinquedoController::class, 'index'])->name('brinquedo');
+
+// Venda
+Route::get('/venda', [App\Http\Controllers\VendaController::class, 'index'])->name('venda');

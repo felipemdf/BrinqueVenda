@@ -1,10 +1,10 @@
-@extends ('layouts.main')
+@extends('layouts.app')
 
-@section ('title', 'parque')
+@section('title', 'parque')
 
 
 
-@section ('content')
+@section('content')
 
 @endsection
 

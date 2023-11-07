@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'vendas')
+@section('title', 'brinquedos')
 
 
 
@@ -8,4 +8,4 @@
 
 @endsection
 
-<!-- venda -->
+<!-- brinquedos -->
