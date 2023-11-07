@@ -12,7 +12,7 @@
             <ul class="navbar-nav me-auto">
                 @guest
                 @else
-                    <a class="nav-link" href="/parque" role="button" aria-haspopup="true">Parque</a>
+                    <a class="nav-link" href="/usuario" role="button" aria-haspopup="true">Usuario</a>
                     <a class="nav-link" href="/brinquedo" role="button" aria-haspopup="true">Brinquedo</a>
                     <a class="nav-link" href="/venda" role="button" aria-haspopup="true">Venda</a>
                 @endguest

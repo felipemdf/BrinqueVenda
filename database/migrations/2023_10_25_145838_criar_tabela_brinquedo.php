@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('brinquedo', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parque_id')->nullable('false');
+            $table->integer('usuario_id')->nullable('false');
             $table->string('nome', 80)->nullable('false');
             $table->string('descricao', 160)->nullable('true');
             $table->integer('capacidade')->nullable('true');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('status_funcionamento', ['ATIVO', 'MANUTENÇÃO','INATIVO'])->nullable('false');
             $table->timestamps();
 
-            $table->foreign('parque_id')->references('id')->on('parque');
+            $table->foreign('usuario_id')->references('id')->on('users');
         });
     }
 

@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'parque')
+@section('title', 'usuario')
 
 
 
 @section('content')
 
 @endsection
-
-<!-- parque -->

@@ -13,7 +13,7 @@ class BrinquedoController extends Controller
 
     public function index()
     {
-        return view('brinquedo');
+        return view('brinquedo.brinquedo');
     }
 
     /**
