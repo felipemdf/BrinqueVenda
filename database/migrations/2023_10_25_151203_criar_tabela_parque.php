@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nome', 80)->nullable('false');
             $table->timestamps();
 
-            $table->foreign('usuario_id')->references('id')->on('usuario');
+            $table->foreign('usuario_id')->references('id')->on('users');
         });
     }
 
