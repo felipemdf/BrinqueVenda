@@ -28,5 +28,6 @@ Route::resource('/brinquedo', BrinquedoController::class);
 Route::resource('/venda', VendaController::class);
 
 // Home
+Route::redirect('/', '/home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

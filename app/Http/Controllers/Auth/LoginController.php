@@ -42,9 +42,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // protected function redirectTo(){
-    //     return '/parque/';
-    // }
 
     public function logout(Request $request): RedirectResponse {
         Auth::logout();
