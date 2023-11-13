@@ -33,9 +33,17 @@
                     <td class="text-center align-middle">{{ sprintf('R$ %.2f', $brinquedo->valor_ingresso) }}</td>
                     <td class="text-center align-middle">{{ $brinquedo->status_funcionamento }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-primary"><i class="far bi-eye-fill"></i></button>
-                        <button type="button" class="btn btn-sm btn-success"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                        <div class="d-flex justify-content-center">
+                            <a type="button" class="btn btn-primary mx-2" href="#"><i
+                                    class="far bi-eye-fill"></i></a>
+                            <a type="button" class="btn btn-success mx-2" href="#"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            <form action="{{ route('brinquedo.destroy', $brinquedo->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger mx-2" type="submit"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

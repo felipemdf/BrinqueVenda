@@ -89,8 +89,12 @@ class BrinquedoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $brinquedo = Brinquedo::find($id);
+
+        $brinquedo->delete();
+
+        return redirect()->route('brinquedo.index')->with('success', 'Brinquedo deletado!');
     }
 }
