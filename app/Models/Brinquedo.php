@@ -12,7 +12,7 @@ class Brinquedo extends Model
     protected $table = 'brinquedo';
 
     protected $fillable = [
-        'parque_id', 'nome', 'descricao', 'capacidade', 'valor_ingresso', 'status_funcionamento',
+        'usuario_id', 'nome', 'descricao', 'capacidade', 'valor_ingresso', 'status_funcionamento',
     ];
 
     public function parque()

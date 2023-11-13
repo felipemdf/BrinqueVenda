@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Brinquedo;
 
+
 class BrinquedoController extends Controller
 {
     public function __construct()
@@ -27,7 +28,9 @@ class BrinquedoController extends Controller
      */
     public function create()
     {
-        //
+        $statusFuncionamento = ['ATIVO', 'MANUTENÇÃO','INATIVO'];
+
+        return view('brinquedo.create', compact('statusFuncionamento'));
     }
 
     /**
@@ -35,7 +38,28 @@ class BrinquedoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = Auth::id();
+
+        $request->validate([
+            'nome'=>['required', 'max:45'],
+            'capacidade'=>['required', 'min:1','numeric'],
+            'valor_ingresso'=>['required', 'min:0','numeric'],
+            'status_funcionamento'=>['required']
+        ]);
+
+
+        $brinquedo = new Brinquedo();
+
+        $brinquedo->nome = $request->get('nome');
+        $brinquedo->capacidade = $request->get('capacidade');
+        $brinquedo->valor_ingresso = $request->get('valor_ingresso');
+        $brinquedo->status_funcionamento = $request->get('status_funcionamento');
+        $brinquedo->descricao = $request->get('descricao');
+        $brinquedo->usuario_id = $userId;
+
+        $brinquedo->save();
+
+        return redirect('/brinquedo')->with('success', 'Brinquedo salvo!');
     }
 
     /**

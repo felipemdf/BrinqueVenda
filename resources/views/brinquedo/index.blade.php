@@ -10,7 +10,7 @@
             <p class="h2">Brinquedos</p>
         </div>
         <div class="col-auto">
-            <button type="button" class="btn btn-success float-right">Adicionar</button>
+            <a type="button" class="btn btn-success float-right" href="{{ route('brinquedo.create') }}">Adicionar</a>
         </div>
     </div>
     <hr>
