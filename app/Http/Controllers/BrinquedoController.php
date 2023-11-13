@@ -65,25 +65,29 @@ class BrinquedoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Brinquedo $brinquedo)
     {
-        //
+      return view('brinquedo.show')->with('brinquedo', $brinquedo);  
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Brinquedo $brinquedo)
     {
-        //
+        $statusFuncionamento = ['ATIVO', 'MANUTENÇÃO','INATIVO'];
+
+        return view('brinquedo.edit', compact('brinquedo'), compact('statusFuncionamento'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Brinquedo $brinquedo)
     {
-        //
+        $brinquedo->fill($request->all())->save();
+
+        return redirect()->route('brinquedo.index')->with('success', 'Brinquedo editado!');
     }
 
     /**
