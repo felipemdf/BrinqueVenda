@@ -6,7 +6,13 @@
 
 @section('content')
     <div class="row">
-        <p class="h2">Novo Brinquedo</p>
+        <div class="col">
+            <p class="h2">Novo Brinquedo</p>
+        </div>
+
+        <div class="col-auto">
+            <a type="button" class="btn btn-primary col" href="{{ route('brinquedo.index') }}">Voltar</a>
+        </div>
     </div>
 
     <hr>

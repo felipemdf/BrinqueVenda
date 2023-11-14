@@ -6,16 +6,44 @@
 
 @section('content')
     <div class="row">
+        <div class="col">
+            <p class="h2">Informações do brinquedo</p>
+        </div>
+        <div class="col-auto">
+            <a type="button" class="btn btn-primary col" href="{{ route('brinquedo.index') }}">Voltar</a>
+        </div>
+    </div>
 
-        <a href="{{ route ('brinquedo.index') }}">Listar</a>
+    <hr>
 
-        <p class="h2">Visualizar Brinquedo</p>
+    <div class="row h-100 justify-content-center align-items-center">
 
-        <div>ID: {{$brinquedo->id}}</div> <br>
-        <div>Nome: {{$brinquedo->nome}}</div> <br>
-        <div>Valor do Ingresso: {{$brinquedo->valor_ingresso}}</div> <br>
-        <div>Capacidade: {{$brinquedo->capacidade}}</div> <br>
-        <div>Status: {{$brinquedo->status_funcionamento}}</div> <br>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text"><strong>ID:</strong> {{ $brinquedo->id }}</p>
+                <p class="card-text"><strong>Nome:</strong> {{ $brinquedo->nome }}</p>
+                <p class="card-text"><strong>Valor do Ingresso:</strong>
+                    {{ sprintf('R$ %.2f', $brinquedo->valor_ingresso) }}</p>
+                <p class="card-text"><strong>Capacidade:</strong> {{ $brinquedo->capacidade }}</p>
+                <p class="card-text"><strong>Status de funcionamento:</strong> {{ $brinquedo->status_funcionamento }}</p>
+                <p class="card-text"><strong>Descrição:</strong> {{ $brinquedo->descricao }}</p>
+            </div>
+            <div class="card-footer" style="background-color: transparent">
+                <div class="d-flex justify-content-between my-2">
+                    <div class="row">
+                        <a type="button" class="btn btn-warning col"
+                            href="{{ route('brinquedo.edit', $brinquedo->id) }}">Editar</a>
 
+                        <form class="col" action="{{ route('brinquedo.destroy', $brinquedo->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button style="height: 100%;" type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     </div>
 @endsection

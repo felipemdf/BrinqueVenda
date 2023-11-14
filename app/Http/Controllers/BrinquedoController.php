@@ -73,8 +73,10 @@ class BrinquedoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Brinquedo $brinquedo)
+    public function edit($id)
     {
+        $brinquedo = Brinquedo::find($id);
+
         $statusFuncionamento = ['ATIVO', 'MANUTENÇÃO','INATIVO'];
 
         return view('brinquedo.edit', compact('brinquedo'), compact('statusFuncionamento'));

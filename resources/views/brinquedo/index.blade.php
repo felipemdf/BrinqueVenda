@@ -34,10 +34,10 @@
                     <td class="text-center align-middle">{{ $brinquedo->status_funcionamento }}</td>
                     <td class="text-center">
                         <div class="d-flex justify-content-center">
-                            <a type="button" class="btn btn-primary mx-2" href="{{ route('brinquedo.show', $brinquedo->id)}}"><i
-                                    class="far bi-eye-fill"></i></a>
-                            <a type="button" class="btn btn-success mx-2" href="{{ route('brinquedo.edit', $brinquedo->id)}}"><i
-                                    class="bi bi-pencil-square"></i></a>
+                            <a type="button" class="btn btn-primary mx-2"
+                                href="{{ route('brinquedo.show', $brinquedo->id) }}"><i class="far bi-eye-fill"></i></a>
+                            <a type="button" class="btn btn-warning mx-2"
+                                href="{{ route('brinquedo.edit', $brinquedo->id) }}"><i class="bi bi-pencil-square"></i></a>
                             <form action="{{ route('brinquedo.destroy', $brinquedo->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
