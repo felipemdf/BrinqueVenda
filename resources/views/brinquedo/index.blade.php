@@ -29,7 +29,7 @@
 
         </select>
 
-        <button class="btn btn-primary mt-2" type="submit">Filter</button>
+        <button class="btn btn-primary mt-2" type="submit">Pesquisar</button>
     </form>
 
     <table class="table table-striped table-bordered">
