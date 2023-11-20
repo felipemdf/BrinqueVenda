@@ -16,24 +16,37 @@ class VendaController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $userId = Auth::id();
 
-        $vendas = DB::table('venda')
+        $filter = is_null($request->query('filter')) 
+            ? ['nome' => '', 'data_venda' => ''] 
+            : $request->query('filter');
+    
+        $vendasQuery = DB::table('venda')
             ->join('brinquedo', 'venda.brinquedo_id', '=', 'brinquedo.id')
-            ->where('brinquedo.usuario_id', $userId)
             ->select(
                 'venda.id', 
                 'venda.quantidade_ingressos',
                 'brinquedo.nome as brinquedo', 
                 DB::raw("strftime('%d/%m/%Y', venda.created_at) as data_venda"),
                 DB::raw('quantidade_ingressos * brinquedo.valor_ingresso as total_venda'))
-            ->get();
-
-            error_log($vendas);
+            ->where('usuario_id', '=', $userId);
         
-        return view('venda.index', compact('vendas'));
+        if (!empty($filter['nome'])) {
+            $vendasQuery->where('nome', 'like', '%'.$filter['nome'].'%');
+        }
+        
+        if (!empty($filter['data_venda'])) {
+            $vendasQuery->whereDate('venda.created_at', $filter['data_venda']);
+        }
+
+        $vendas = $vendasQuery->get();
+        
+        error_log($vendas);
+        
+        return view('venda.index', compact('vendas', 'filter'));
     }
     
     /**

@@ -14,6 +14,21 @@
         </div>
     </div>
     <hr>
+
+    <form class="form-inline mb-4" method="GET" action="{{ route('venda.index') }}">
+        @csrf
+
+        <label for="nome">Nome do brinquedo: </label>
+        <input type="text" class="form-control" id="nome" name="filter[nome]" placeholder="Nome do brinquedo"
+            value="{{ $filter['nome'] ?? '' }}">
+
+        <label for="data_venda">Data da venda: </label>
+        <input type="date" class="form-control" id="data_venda" name="filter[data_venda]"
+            value="{{ $filter['data_venda'] ?? '' }}">
+
+        <button class="btn btn-primary mt-2" type="submit">Filter</button>
+    </form>
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
