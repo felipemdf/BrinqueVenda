@@ -26,7 +26,7 @@
         <input type="date" class="form-control" id="data_venda" name="filter[data_venda]"
             value="{{ $filter['data_venda'] ?? '' }}">
 
-        <button class="btn btn-primary mt-2" type="submit">Pesquisar</button>
+        <button class="btn btn-primary mt-3" type="submit">Pesquisar</button>
     </form>
 
     <table class="table table-striped table-bordered">
