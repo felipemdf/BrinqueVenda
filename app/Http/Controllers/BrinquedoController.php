@@ -79,7 +79,7 @@ class BrinquedoController extends Controller
 
         $statusFuncionamento = ['ATIVO', 'MANUTENÇÃO','INATIVO'];
 
-        return view('brinquedo.edit', compact('brinquedo'), compact('statusFuncionamento'));
+        return view('brinquedo.edit', compact('brinquedo', 'statusFuncionamento'));
     }
 
     /**
@@ -87,6 +87,13 @@ class BrinquedoController extends Controller
      */
     public function update(Request $request, Brinquedo $brinquedo)
     {
+        $request->validate([
+            'nome'=>['required', 'max:45'],
+            'capacidade'=>['required', 'min:1','numeric'],
+            'valor_ingresso'=>['required', 'min:0','numeric'],
+            'status_funcionamento'=>['required']
+        ]);
+        
         $brinquedo->fill($request->all())->save();
 
         return redirect()->route('brinquedo.index')->with('success', 'Brinquedo editado!');
