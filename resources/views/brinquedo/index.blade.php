@@ -14,6 +14,24 @@
         </div>
     </div>
     <hr>
+    <form class="form-inline mb-4" method="GET" action="{{ route('brinquedo.index') }}">
+        @csrf
+
+        <label for="nome">Nome do brinquedo: </label>
+        <input type="text" class="form-control" id="nome" name="filter[nome]" placeholder="Nome do brinquedo"
+            value="{{ $filter['nome'] ?? '' }}">
+
+        <label for="status_funcionamento">Status de funcionamento: </label>
+        <select class="form-select" id="status_funcionamento" name="filter[status_funcionamento]">
+            @foreach ($statusFuncionamento as $status)
+                <option {{ $filter['status_funcionamento'] == $status ? 'selected' : '' }}>{{ $status }}</option>
+            @endforeach
+
+        </select>
+
+        <button class="btn btn-primary mt-2" type="submit">Filter</button>
+    </form>
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -37,7 +55,8 @@
                             <a type="button" class="btn btn-primary mx-2"
                                 href="{{ route('brinquedo.show', $brinquedo->id) }}"><i class="far bi-eye-fill"></i></a>
                             <a type="button" class="btn btn-warning mx-2"
-                                href="{{ route('brinquedo.edit', $brinquedo->id) }}"><i class="bi bi-pencil-square"></i></a>
+                                href="{{ route('brinquedo.edit', $brinquedo->id) }}"><i
+                                    class="bi bi-pencil-square"></i></a>
                             <form action="{{ route('brinquedo.destroy', $brinquedo->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')

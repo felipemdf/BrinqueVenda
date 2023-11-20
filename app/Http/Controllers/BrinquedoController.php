@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Brinquedo;
+use Illuminate\Support\Facades\DB;
 
 
 class BrinquedoController extends Controller
@@ -14,13 +15,28 @@ class BrinquedoController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $statusFuncionamento = ['ATIVO', 'MANUTENÇÃO','INATIVO'];
+
         $userId = Auth::id();
+        $filter = is_null($request->query('filter')) 
+            ? ['nome' => '', 'status_funcionamento' => ''] 
+            : $request->query('filter');
+        
+        $brinquedosQuery = DB::table('brinquedo')->where('usuario_id', '=', $userId);
+        
+        if (!empty($filter['nome'])) {
+            $brinquedosQuery->where('nome', 'like', '%'.$filter['nome'].'%');
+        }
+        
+        if (!empty($filter['status_funcionamento'])) {
+            $brinquedosQuery->where('status_funcionamento', $filter['status_funcionamento']);
+        }
 
-        $brinquedos = Brinquedo::where('usuario_id', '=', $userId)->get();
+        $brinquedos = $brinquedosQuery->get();
 
-        return view('brinquedo.index', compact('brinquedos'));
+        return view('brinquedo.index', compact('brinquedos', 'filter', 'statusFuncionamento'));
     }
 
     /**
