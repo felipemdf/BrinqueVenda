@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Brinquedo;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +15,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $admin = User::where('email', 'admin@gmail.com')->first();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        if (!$admin) {
+            
+            $admin = User::create([
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('admin'),
+            ]);
+
+            $this->command->info('Usuário admin criado com sucesso!');
+        } else {
+            $this->command->info('Usuário admin já existe.');
+        }
+
+        Brinquedo::factory()->count(4)->create([
+            'usuario_id' => $admin->id,
+        ]);
     }
 }

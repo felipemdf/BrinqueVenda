@@ -2,8 +2,6 @@
 
 @section('title', 'vendas')
 
-
-
 @section('content')
     <div class="row">
         <div class="col">

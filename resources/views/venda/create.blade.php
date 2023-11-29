@@ -2,8 +2,6 @@
 
 @section('title', 'vendas')
 
-
-
 @section('content')
     <div class="row">
         <div class="col">
@@ -20,9 +18,7 @@
     <form method="POST" action="{{ route('venda.store') }}">
         @csrf
         @if ($errors->any())
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ implode('', $errors->all(':message')) }}
-            </div>
+            <x-alert />
         @endif
 
         <div class="mb-3 mt-3">

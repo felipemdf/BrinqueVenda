@@ -1,29 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="jumbotron text-center">
-        <h1 class="display-4">Bem-vindo ao BrinqueVenda!</h1>
-        <p class="lead">Sua plataforma para gerenciar brinquedos de parque de forma eficiente.</p>
+        <h1 class="display-4">Bem-vindo ao Brinque Venda!</h1>
+        <p class="lead">Sua plataforma para gerenciar brinquedos de parque de diversão de forma eficiente.</p>
     </div>
-
 @endsection

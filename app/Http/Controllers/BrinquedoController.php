@@ -17,7 +17,7 @@ class BrinquedoController extends Controller
 
     public function index(Request $request)
     {
-        $statusFuncionamento = ['ATIVO', 'MANUTENÇÃO','INATIVO'];
+        $statusFuncionamento = ['TODOS','ATIVO', 'MANUTENÇÃO','INATIVO'];
 
         $userId = Auth::id();
         $filter = is_null($request->query('filter')) 
@@ -30,7 +30,7 @@ class BrinquedoController extends Controller
             $brinquedosQuery->where('nome', 'like', '%'.$filter['nome'].'%');
         }
         
-        if (!empty($filter['status_funcionamento'])) {
+        if (!empty($filter['status_funcionamento']) && $filter['status_funcionamento'] != 'TODOS') {
             $brinquedosQuery->where('status_funcionamento', $filter['status_funcionamento']);
         }
 

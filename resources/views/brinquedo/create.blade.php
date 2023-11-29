@@ -20,9 +20,7 @@
     <form method="POST" action="{{ route('brinquedo.store') }}">
         @csrf
         @if ($errors->any())
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ implode('', $errors->all(':message')) }}
-            </div>
+            <x-alert />
         @endif
         <div class="mb-3 mt-3">
             <label for="nome">Nome:</label>
